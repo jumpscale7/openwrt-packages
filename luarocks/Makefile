@@ -41,7 +41,6 @@ CONFIGURE_ARGS = \
 
 define Build/Configure
   $(call Build/Configure/Default)
-	echo Staging dir is $(STAGING_DIR)
 endef
 
 define Build/Compile
