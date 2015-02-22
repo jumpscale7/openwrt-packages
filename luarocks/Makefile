@@ -1,0 +1,59 @@
+#
+# Copyright (C) 2011 OpenWrt.org
+#
+# This is free software, licensed under the GNU General Public License v2.
+# See /LICENSE for more information.
+#
+
+include $(TOPDIR)/rules.mk
+
+PKG_NAME:=luarocks
+PKG_VERSION:=2.2.0-rc1
+PKG_RELEASE:=1
+
+PKG_SOURCE:=v$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/keplerproject/$(PKG_NAME)/archive/
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+PKG_MAINTAINER:=Amr Hassan <amr.hassan@gmail.com>
+PKG_INSTALL=1
+PKG_BUILD_DEPENDS:=lua/host luac/host
+
+include $(INCLUDE_DIR)/package.mk
+
+define Package/luarocks
+  SUBMENU:=Lua
+  SECTION:=lang
+  CATEGORY:=Languages
+  TITLE:=luarocks
+  URL:=https://github.com/keplerproject/luarocks
+  DEPENDS:=+lua +luac +liblua +luasocket +unzip +curl
+endef
+
+define Package/luarocks/description
+	LuaRocks is a deployment and management system for Lua modules.
+endef
+
+# My custom args, copied and modified from SDK_ROOT/include/package-defaults.mk
+CONFIGURE_ARGS = \
+    --prefix=$(CONFIGURE_PREFIX) \
+    --sysconfdir=/etc \
+    --with-lua=$(STAGING_DIR_HOST)
+
+define Build/Configure
+  $(call Build/Configure/Default)
+	echo Staging dir is $(STAGING_DIR)
+endef
+
+define Build/Compile
+	$(call Build/Compile/Default,build)
+endef
+
+define Package/luarocks/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/luarocks-5.1 $(1)/usr/bin/luarocks
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/luarocks-admin-5.1 $(1)/usr/bin/luarocks-admin
+	$(CP) $(PKG_INSTALL_DIR)/usr/share $(1)/usr/share
+	$(CP) $(PKG_INSTALL_DIR)/etc $(1)/etc
+endef
+
+$(eval $(call BuildPackage,luarocks))
