@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luarocks
 PKG_VERSION:=2.2.0-rc1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/keplerproject/$(PKG_NAME)/archive/
@@ -26,7 +26,7 @@ define Package/luarocks
   CATEGORY:=Languages
   TITLE:=luarocks
   URL:=https://github.com/keplerproject/luarocks
-  DEPENDS:=+lua +luac +liblua +luasocket +unzip +curl
+  DEPENDS:=+lua +luac +liblua +luasocket +unzip +curl +luasec
 endef
 
 define Package/luarocks/description
