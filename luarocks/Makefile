@@ -1,9 +1,9 @@
 #
-# Copyright (C) 2011 OpenWrt.org
+# Copyright (C) 2006-2014 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
-#
+# 
 
 include $(TOPDIR)/rules.mk
 
@@ -13,10 +13,10 @@ PKG_RELEASE:=2
 
 PKG_SOURCE:=v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/keplerproject/$(PKG_NAME)/archive/
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_MAINTAINER:=Amr Hassan <amr.hassan@gmail.com>
 PKG_INSTALL=1
 PKG_BUILD_DEPENDS:=lua/host luac/host
+PKG_LICENSE=GPL
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -38,10 +38,6 @@ CONFIGURE_ARGS = \
     --prefix=$(CONFIGURE_PREFIX) \
     --sysconfdir=/etc \
     --with-lua=$(STAGING_DIR_HOST)
-
-define Build/Configure
-  $(call Build/Configure/Default)
-endef
 
 define Build/Compile
 	$(call Build/Compile/Default,build)

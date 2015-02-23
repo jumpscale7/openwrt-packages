@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2011 OpenWrt.org
+# Copyright (C) 2006-2014 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -15,6 +15,7 @@ PKG_SOURCE:=version_$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/Tieske/$(PKG_NAME)/archive/
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-version_$(PKG_VERSION)
 PKG_MAINTAINER:=Amr Hassan <amr.hassan@gmail.com>
+PKG_LICENSE=Apache-2.0
 
 LUA_MODULE_PATH:=/usr/lib/lua
 

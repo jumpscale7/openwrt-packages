@@ -1,9 +1,9 @@
 #
-# Copyright (C) 2011 OpenWrt.org
+# Copyright (C) 2006-2014 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
-#
+#  
 
 include $(TOPDIR)/rules.mk
 
@@ -13,8 +13,8 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/amrhassan/$(PKG_NAME)/archive/
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_MAINTAINER:=Amr Hassan <amr.hassan@gmail.com>
+PKG_LICENSE=MIT
 
 LUA_MODULE_PATH:=/usr/lib/lua
 
