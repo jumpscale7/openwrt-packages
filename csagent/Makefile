@@ -42,7 +42,9 @@ endef
 
 define Package/csagent/install
 	$(INSTALL_DIR) $(1)/usr/share/csagent
+	$(INSTALL_DIR) $(1)/usr/bin/
 	$(CP) $(PKG_BUILD_DIR)/*.lua $(1)/usr/share/csagent
+	$(INSTALL_BIN) files/csagent $(1)/usr/bin/csagent
 endef
 
 $(eval $(call BuildPackage,csagent))
