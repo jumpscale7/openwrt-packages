@@ -24,7 +24,7 @@ define Package/csagent
   CATEGORY:=JumpScale
   TITLE:=csagent
   URL:=https://github.com/jumpscale/csagent
-  DEPENDS:=+lua +luasocket +uuid +basexx +json4lua +luafilesystem +lua-penlight +luarocks
+  DEPENDS:=+lua +luasocket +uuid +basexx +json4lua +luafilesystem +lua-penlight +luarocks +lua-cliargs
 endef
 
 define Package/csagent/description
