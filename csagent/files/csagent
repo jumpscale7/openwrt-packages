@@ -7,5 +7,5 @@ eval `luarocks path`
 export LUA_PATH="/usr/share/csagent/?.lua;$LUA_PATH"
 export LUA_CPATH="/usr/lib/lua/?.so;$LUA_CPATH"
 
-
-lua /usr/share/csagent/csagent.lua $1
+echo $@
+lua /usr/share/csagent/csagent.lua $@
