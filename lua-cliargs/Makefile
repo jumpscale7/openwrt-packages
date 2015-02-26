@@ -15,7 +15,7 @@ PKG_SOURCE:=v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/amireh/lua_cliargs/archive/
 PKG_MAINTAINER:=Amr Hassan <amr.hassan@gmail.com>
 PKG_LICENSE=MIT
-PkG_BUILD_DIR=$(BUILD_DIR)/lua_cliargs-v$(PKG_VERSION)/
+PKG_BUILD_DIR=$(BUILD_DIR)/lua_cliargs-$(PKG_VERSION)/
 
 LUA_MODULE_PATH:=/usr/lib/lua
 
