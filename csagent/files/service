@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+
+USE_PROCD=1
+APP=csagent
+SERVICE_WRITE_PID=1
+SERVICE_DAEMONIZE=1
+START=999
+
+start_service() {
+	procd_open_instance
+	procd_set_param file /etc/config/csagent
+	procd_set_param command /usr/bin/$APP
+	procd_close_instance
+}
+
+service_triggers()
+{
+  procd_add_reload_trigger "csagent"
+}
