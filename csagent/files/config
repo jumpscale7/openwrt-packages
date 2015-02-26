@@ -1,0 +1,4 @@
+config main
+  option agentcontroller_jsonrpc_url 'http://localhost:4444'
+  option gid '0'
+  option roles 'csagent'

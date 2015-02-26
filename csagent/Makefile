@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=csagent
 PKG_VERSION:=3
-PKG_RELEASE:=2
+PKG_RELEASE:=4
 
 PKG_SOURCE:=v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/jumpscale/$(PKG_NAME)/archive/
@@ -43,8 +43,10 @@ endef
 define Package/csagent/install
 	$(INSTALL_DIR) $(1)/usr/share/csagent
 	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/etc/config
 	$(CP) $(PKG_BUILD_DIR)/*.lua $(1)/usr/share/csagent
 	$(INSTALL_BIN) files/csagent $(1)/usr/bin/csagent
+	$(INSTALL_DATA) files/config $(1)/etc/config/csagent
 endef
 
 $(eval $(call BuildPackage,csagent))
