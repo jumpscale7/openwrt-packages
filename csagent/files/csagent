@@ -11,4 +11,4 @@ gid="`uci get csagent.@main[0].gid`"
 roles="`uci get csagent.@main[0].roles`"
 agentcontroller_jsonrpc_url="`uci get csagent.@main[0].agentcontroller_jsonrpc_url`"
 
-lua /usr/share/csagent/csagent.lua -c "$agentcontroller_jsonrpc_url" -r "$roles" $gid
+exec lua /usr/share/csagent/csagent.lua -c "$agentcontroller_jsonrpc_url" -r "$roles" $gid

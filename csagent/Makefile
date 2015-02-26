@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=csagent
 PKG_VERSION:=3
-PKG_RELEASE:=4
+PKG_RELEASE:=6
 
 PKG_SOURCE:=v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/jumpscale/$(PKG_NAME)/archive/
@@ -40,13 +40,35 @@ endef
 define Build/Install
 endef
 
+define Package/csagent/postinst
+#!/bin/sh
+# check if we are on real system
+if [ -z "$${IPKG_INSTROOT}" ]; then
+        echo "Enabling rc.d symlink for $(PKG_NAME)"
+        /etc/init.d/$(PKG_NAME) enable
+fi
+exit 0
+endef
+
+define Package/csagent/prerm
+#!/bin/sh
+# check if we are on real system
+if [ -z "$${IPKG_INSTROOT}" ]; then
+        echo "Removing rc.d symlink for $(PKG_NAME)"
+        /etc/init.d/$(PKG_NAME) disable
+fi
+exit 0
+endef
+
 define Package/csagent/install
 	$(INSTALL_DIR) $(1)/usr/share/csagent
 	$(INSTALL_DIR) $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/etc/config
+	$(INSTALL_DIR) $(1)/etc/init.d
 	$(CP) $(PKG_BUILD_DIR)/*.lua $(1)/usr/share/csagent
 	$(INSTALL_BIN) files/csagent $(1)/usr/bin/csagent
 	$(INSTALL_DATA) files/config $(1)/etc/config/csagent
+	$(INSTALL_BIN) files/service $(1)/etc/init.d/csagent
 endef
 
 $(eval $(call BuildPackage,csagent))
