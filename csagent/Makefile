@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=csagent
-PKG_VERSION:=3
-PKG_RELEASE:=6
+PKG_VERSION:=4
+PKG_RELEASE:=1
 
 PKG_SOURCE:=v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/jumpscale/$(PKG_NAME)/archive/
@@ -24,7 +24,7 @@ define Package/csagent
   CATEGORY:=JumpScale
   TITLE:=csagent
   URL:=https://github.com/jumpscale/csagent
-  DEPENDS:=+lua +luasocket +uuid +basexx +json4lua +luafilesystem +lua-penlight +luarocks +lua-cliargs
+  DEPENDS:=+lua +luasocket +uuid +basexx +json4lua +luafilesystem +lua-penlight +luarocks +lua-cliargs +datafile
 endef
 
 define Package/csagent/description
