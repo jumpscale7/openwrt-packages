@@ -8,4 +8,4 @@ echo "src-git jumpscale https://github.com/Jumpscale/openwrt-packages.git" >> fe
 
 #### The following packages require the use of eglibc instead of uClibc: ####
 
-* lunix
+* lunix [[1](https://github.com/wahern/lunix/issues/3)]
